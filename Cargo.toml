@@ -1,0 +1,30 @@
+[package]
+name = "pipe-chain"
+version = "0.1.1"
+edition = "2021"
+authors = ["Alois Masanell <massou@cantina.space>"]
+description = "Combinators & parser library"
+keywords = ["parser", "parser-combinator", "bencode", "pkt-line", "websocket"]
+readme = "readme.md"
+include = ["Cargo.toml", "readme.md", "license", "src/**"]
+license = "BSD-3-Clause"
+categories = ["rust-patterns", "parsing", "parser-implementations"]
+homepage = "https://github.com/cantina-space/pipe-chain"
+documentation = "https://docs.rs/pipe-chain"
+repository = "https://github.com/cantina-space/pipe-chain"
+
+[dependencies]
+fatal-error = "1.0.1"
+tuplify = "1.1.4"
+either = { version = "1.9.0", optional = true }
+unicode-segmentation = { version = "1.10.1", optional = true }
+paste = { version = "1.0.14", optional = true }
+
+[features]
+default = ["either", "parsers", "unicode", "dep:paste"]
+either = ["dep:either"]
+unicode = ["unicode-segmentation"]
+parsers = ["bencode", "pktline", "websocket"]
+bencode = []
+pktline = []
+websocket = []
